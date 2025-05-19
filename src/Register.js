@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    firstName: "",
+    first_name: "",
     middleName: "",
-    lastName: "",
-    secondLastName: "",
+    last_name: "",
+    second_last_name: "",
     email: "",
     phone: "",
     country: "",
@@ -21,26 +21,56 @@ export default function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      country,
-      city,
-      password,
-    } = formData;
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!firstName || !lastName || !email || !phone || !country || !city || !password) {
-      setError("Por favor completa los campos obligatorios.");
-      return;
+  const {
+    first_name,
+    last_name,
+    email,
+    phone,
+    country,
+    city,
+    password,
+  } = formData;
+
+  if (!first_name || !last_name || !email || !phone || !country || !city || !password) {
+    setError("Por favor completa los campos obligatorios.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:8000/api/registro/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("Registro exitoso");
+      setFormData({
+        first_name: "",
+        middleName: "",
+        last_name: "",
+        second_last_name: "",
+        email: "",
+        phone: "",
+        country: "",
+        city: "",
+        address: "",
+        password: "",
+      });
+    } else {
+      const data = await response.json();
+      setError("Error al registrar: " + JSON.stringify(data));
     }
+  } catch (err) {
+    setError("Error de red o del servidor.");
+  }
+};
 
-    setError("");
-    alert("Registro exitoso");
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center px-4">
@@ -56,9 +86,9 @@ export default function Register() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
-              name="firstName"
+              name="first_name"
               placeholder="Primer nombre*"
-              value={formData.firstName}
+              value={formData.first_name}
               onChange={handleChange}
               className="input-style"
             />
@@ -72,17 +102,17 @@ export default function Register() {
             />
             <input
               type="text"
-              name="lastName"
+              name="last_name"
               placeholder="Primer apellido*"
-              value={formData.lastName}
+              value={formData.last_name}
               onChange={handleChange}
               className="input-style"
             />
             <input
               type="text"
-              name="secondLastName"
+              name="second_last_name"
               placeholder="Segundo apellido"
-              value={formData.secondLastName}
+              value={formData.second_last_name}
               onChange={handleChange}
               className="input-style"
             />
