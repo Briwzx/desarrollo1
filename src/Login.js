@@ -1,25 +1,48 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default function Login() {
-  const [email, setEmail] = useState("prueba@gmail.com");
-  const [password, setPassword] = useState("12345");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleCaptchaChange = (token) => {
+  setCaptchaToken(token);
+};
+  
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!email || !password) {
-      setError("Por favor completa todos los campos.");
-      return;
+  if (!email || !password || !captchaToken) {
+    setError("Por favor completa todos los campos. Y verifica el CAPTCHA.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:8000/api/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password, captchaToken }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Inicio de sesión exitoso");
+      window.open("/home", "_blank");
+    } else {
+      setError(data.error || "Error al iniciar sesión");
     }
+  } catch (err) {
+    setError("Error de red o del servidor.");
+  }
+};
 
-    setError("");
-    alert("Inicio de sesión exitoso");
-
-    // 🔗 Abre la página /home en una nueva pestaña
-    window.open("/home", "_blank");
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center px-4">
@@ -59,6 +82,8 @@ export default function Login() {
           </div>
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
+
+          <ReCAPTCHA sitekey="6Lfhy1QrAAAAALJjTFLesR9JN89qkad5mf4mX_aU" onChange={handleCaptchaChange}/>
 
           <button
             type="submit"
