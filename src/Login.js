@@ -1,48 +1,50 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
-
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [captchaToken, setCaptchaToken] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleCaptchaChange = (token) => {
-  setCaptchaToken(token);
-};
-  
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (!email || !password || !captchaToken) {
-    setError("Por favor completa todos los campos. Y verifica el CAPTCHA.");
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:8000/api/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password, captchaToken }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      alert("Inicio de sesión exitoso");
-      window.open("/home", "_blank");
-    } else {
-      setError(data.error || "Error al iniciar sesión");
+    if (!email || !password) {
+      setError("Por favor completa todos los campos.");
+      return;
     }
-  } catch (err) {
-    setError("Error de red o del servidor.");
-  }
-};
 
+    setError("");
+    setLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:8000/api/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('token', data.token);
+        console.log("Inicio de sesión exitoso. Token:", data.token);
+        navigate('/mis-postulaciones');
+      } else {
+        setError(data.error || "Error al iniciar sesión. Intenta de nuevo.");
+        console.error("Error de login:", data);
+      }
+    } catch (err) {
+      setError("No se pudo conectar al servidor. Intenta de nuevo más tarde.");
+      console.error("Error de red o del servidor:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center px-4">
@@ -83,13 +85,12 @@ export default function Login() {
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          <ReCAPTCHA sitekey="6Lfhy1QrAAAAALJjTFLesR9JN89qkad5mf4mX_aU" onChange={handleCaptchaChange}/>
-
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-md transition"
+            disabled={loading}
           >
-            Iniciar Sesión
+            {loading ? "Iniciando Sesión..." : "Iniciar Sesión"}
           </button>
         </form>
 
@@ -111,4 +112,3 @@ export default function Login() {
     </div>
   );
 }
-

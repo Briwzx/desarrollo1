@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Register() {
   const [formData, setFormData] = useState({
     first_name: "",
-    middleName: "",
+    middle_name: "", // Cambiado de 'middleName' a 'middle_name'
     last_name: "",
     second_last_name: "",
     email: "",
@@ -12,9 +12,12 @@ export default function Register() {
     country: "",
     city: "",
     address: "",
+    role: "cliente", // Añadido el campo 'role' con un valor por defecto
     password: "",
+    password_confirm: "", // Añadido el campo para confirmar contraseña
   });
 
+  const [message, setMessage] = useState(''); // Añadido para mensajes de éxito
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -22,54 +25,84 @@ export default function Register() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    setMessage(''); // Limpiar mensajes previos
+    setError('');
 
-  const {
-    first_name,
-    last_name,
-    email,
-    phone,
-    country,
-    city,
-    password,
-  } = formData;
+    // Validaciones básicas en el frontend (más completas ahora)
+    const {
+      first_name,
+      last_name,
+      email,
+      phone,
+      country,
+      city,
+      address, // Ahora también obligatorio en el backend por extra_kwargs
+      role, // Ahora también obligatorio
+      password,
+      password_confirm,
+    } = formData;
 
-  if (!first_name || !last_name || !email || !phone || !country || !city || !password) {
-    setError("Por favor completa los campos obligatorios.");
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:8000/api/registro/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert("Registro exitoso");
-      setFormData({
-        first_name: "",
-        middleName: "",
-        last_name: "",
-        second_last_name: "",
-        email: "",
-        phone: "",
-        country: "",
-        city: "",
-        address: "",
-        password: "",
-      });
-    } else {
-      const data = await response.json();
-      setError("Error al registrar: " + JSON.stringify(data));
+    // Verificar campos obligatorios. Asegúrate de que coincidan con extra_kwargs en el serializer
+    if (!first_name || !last_name || !email || !phone || !country || !city || !address || !role || !password || !password_confirm) {
+        setError("Por favor completa todos los campos obligatorios.");
+        return;
     }
-  } catch (err) {
-    setError("Error de red o del servidor.");
-  }
-};
+
+    if (password !== password_confirm) {
+      setError("Las contraseñas no coinciden.");
+      return;
+    }
+    if (password.length < 8) {
+      setError("La contraseña debe tener al menos 8 caracteres.");
+      return;
+    }
+
+
+    try {
+      const response = await fetch("http://localhost:8000/api/registro/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json(); // Siempre parsear la respuesta para ver detalles
+
+      if (response.ok) {
+        setMessage(data.message || "Registro exitoso!"); // Usar el mensaje del backend
+        setError(""); // Limpiar errores
+        // Resetear el formulario
+        setFormData({
+            first_name: "", middle_name: "", last_name: "", second_last_name: "",
+            email: "", phone: "", country: "", city: "", address: "",
+            role: "cliente", password: "", password_confirm: "",
+        });
+      } else {
+        // Manejo de errores detallado del backend
+        // data puede ser un objeto con errores por campo
+        if (typeof data === 'object' && data !== null) {
+            let errorMessages = [];
+            for (const key in data) {
+                if (Array.isArray(data[key])) {
+                    errorMessages.push(`${key}: ${data[key].join(', ')}`);
+                } else {
+                    errorMessages.push(`${key}: ${data[key]}`);
+                }
+            }
+            setError("Error al registrar: " + errorMessages.join('; '));
+        } else {
+            setError("Error al registrar: " + (data.error || JSON.stringify(data)));
+        }
+        setMessage(""); // Limpiar mensaje de éxito
+      }
+    } catch (err) {
+      setError("Error de red o del servidor. Inténtelo de nuevo.");
+      setMessage("");
+      console.error("Error al registrar:", err);
+    }
+  };
 
 
   return (
@@ -94,9 +127,9 @@ export default function Register() {
             />
             <input
               type="text"
-              name="middleName"
+              name="middle_name" // Cambiado de 'middleName' a 'middle_name'
               placeholder="Segundo nombre"
-              value={formData.middleName}
+              value={formData.middle_name}
               onChange={handleChange}
               className="input-style"
             />
@@ -125,7 +158,7 @@ export default function Register() {
               className="input-style"
             />
             <input
-              type="tel"
+              type="tel" // Cambiado a 'tel' para números de teléfono
               name="phone"
               placeholder="Número de teléfono*"
               value={formData.phone}
@@ -151,11 +184,23 @@ export default function Register() {
             <input
               type="text"
               name="address"
-              placeholder="Dirección"
+              placeholder="Dirección*" // Marcar como obligatorio en el frontend si es obligatorio en el backend
               value={formData.address}
               onChange={handleChange}
               className="input-style col-span-full"
             />
+            {/* Selector de Rol */}
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="input-style col-span-full" // Ajusta el estilo según Tailwind
+            >
+              <option value="cliente">Cliente</option>
+              <option value="admin">Administrador</option>
+              <option value="editor">Editor</option>
+            </select>
+
             <input
               type="password"
               name="password"
@@ -164,9 +209,18 @@ export default function Register() {
               onChange={handleChange}
               className="input-style col-span-full"
             />
+            <input
+              type="password"
+              name="password_confirm" // Nuevo campo para confirmar contraseña
+              placeholder="Confirmar Contraseña*"
+              value={formData.password_confirm}
+              onChange={handleChange}
+              className="input-style col-span-full"
+            />
           </div>
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {message && <p className="text-green-600 text-sm font-medium mt-2">{message}</p>} {/* Mensaje de éxito */}
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>} {/* Mensaje de error */}
 
           <button
             type="submit"
