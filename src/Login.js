@@ -2,47 +2,65 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
 
+  // Usuario y contraseña predeterminados
+  const USUARIO_PREDETERMINADO = "admin@correo.com";
+  const CONTRASENA_PREDETERMINADA = "123456";
+
   const handleCaptchaChange = (token) => {
-  setCaptchaToken(token);
-};
-  
- const handleSubmit = async (e) => {
-  e.preventDefault();
+    setCaptchaToken(token);
+  };
 
-  if (!email || !password || !captchaToken) {
-    setError("Por favor completa todos los campos. Y verifica el CAPTCHA.");
-    return;
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch("http://localhost:8000/api/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password, captchaToken }),
-    });
+    if (!email || !password || !captchaToken) {
+      setError("Por favor completa todos los campos. Y verifica el CAPTCHA.");
+      return;
+    }
 
-    const data = await response.json();
-
-    if (response.ok) {
+    // Validación local sin backend
+    if (
+      email === USUARIO_PREDETERMINADO &&
+      password === CONTRASENA_PREDETERMINADA
+    ) {
       alert("Inicio de sesión exitoso");
       window.open("/home", "_blank");
+      return;
     } else {
-      setError(data.error || "Error al iniciar sesión");
+      setError("Correo o contraseña incorrectos.");
+      return;
     }
-  } catch (err) {
-    setError("Error de red o del servidor.");
-  }
-};
 
+    // Si quieres mantener la llamada al backend, comenta el bloque anterior y descomenta lo siguiente:
+    /*
+    try {
+      const response = await fetch("http://localhost:8000/api/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password, captchaToken }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Inicio de sesión exitoso");
+        window.open("/home", "_blank");
+      } else {
+        setError(data.error || "Error al iniciar sesión");
+      }
+    } catch (err) {
+      setError("Error de red o del servidor.");
+    }
+    */
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center px-4">
@@ -83,7 +101,10 @@ export default function Login() {
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          <ReCAPTCHA sitekey="6Lfhy1QrAAAAALJjTFLesR9JN89qkad5mf4mX_aU" onChange={handleCaptchaChange}/>
+          <ReCAPTCHA
+            sitekey="6Lfhy1QrAAAAALJjTFLesR9JN89qkad5mf4mX_aU"
+            onChange={handleCaptchaChange}
+          />
 
           <button
             type="submit"
@@ -111,4 +132,3 @@ export default function Login() {
     </div>
   );
 }
-
