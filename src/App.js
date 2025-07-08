@@ -3,6 +3,7 @@ import Login from "./Login";
 import Register from "./Register";
 import HomePage from "./Homepage";
 import Editarperfil from "./editarperfil";
+import Soporte from "./soporte";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/editarperfil" element={<Editarperfil />} />
-      
+        <Route path="/soporte" element={<Soporte />} />
+
       </Routes>
   );
 }

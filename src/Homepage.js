@@ -42,32 +42,22 @@ export default function HomePage() {
         setMostrarPerfil(false);
       }
     }
+
     if (mostrarOfertas || mostrarEmpresas || mostrarPerfil) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [mostrarOfertas, mostrarEmpresas, mostrarPerfil]);
 
   const ofertasNuevas = [
-    {
-      titulo: "Desarrollador Frontend React",
-      empresa: "Tech Solutions",
-      ubicacion: "Remoto",
-    },
-    {
-      titulo: "Diseñador UX/UI",
-      empresa: "Creativa Studio",
-      ubicacion: "CDMX",
-    },
-    {
-      titulo: "Analista de Datos",
-      empresa: "DataCorp",
-      ubicacion: "Guadalajara",
-    },
+    { titulo: "Desarrollador Frontend React", empresa: "Tech Solutions", ubicacion: "Remoto" },
+    { titulo: "Diseñador UX/UI", empresa: "Creativa Studio", ubicacion: "CDMX" },
+    { titulo: "Analista de Datos", empresa: "DataCorp", ubicacion: "Guadalajara" },
   ];
 
   const empresasEnviadas = [
@@ -125,9 +115,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <div className="text-center p-2">
-                  <a href="#" className="text-blue-600 hover:underline text-sm">
-                    Ver todas las ofertas
-                  </a>
+                  <a href="#" className="text-blue-600 hover:underline text-sm">Ver todas las ofertas</a>
                 </div>
               </div>
             )}
@@ -150,9 +138,7 @@ export default function HomePage() {
             </button>
             {mostrarEmpresas && (
               <div className="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-xl z-20 border border-gray-200">
-                <div className="p-4 border-b font-bold text-blue-700">
-                  Empresas con CV enviado
-                </div>
+                <div className="p-4 border-b font-bold text-blue-700">Empresas con CV enviado</div>
                 <ul>
                   {empresasEnviadas.map((empresa, idx) => (
                     <li key={idx} className="px-4 py-3 hover:bg-blue-50 border-b last:border-b-0">
@@ -162,15 +148,13 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <div className="text-center p-2">
-                  <a href="#" className="text-blue-600 hover:underline text-sm">
-                    Ver historial de envíos
-                  </a>
+                  <a href="#" className="text-blue-600 hover:underline text-sm">Ver historial de envíos</a>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Perfil */}
+          {/* Botón Perfil */}
           <div className="relative inline-block" ref={perfilRef}>
             <button
               onClick={() => {
@@ -181,11 +165,7 @@ export default function HomePage() {
               className="flex items-center gap-2 focus:outline-none"
             >
               {imagenPerfil ? (
-                <img
-                  src={imagenPerfil}
-                  alt="Perfil"
-                  className="w-9 h-9 rounded-full object-cover border-2 border-blue-600"
-                />
+                <img src={imagenPerfil} alt="Perfil" className="w-9 h-9 rounded-full object-cover border-2 border-blue-600" />
               ) : (
                 <span className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
                   {perfil.nombre[0]}
@@ -198,11 +178,7 @@ export default function HomePage() {
                 <div className="p-4 border-b">
                   <div className="flex items-center gap-3 mb-2">
                     {imagenPerfil ? (
-                      <img
-                        src={imagenPerfil}
-                        alt="Perfil"
-                        className="w-12 h-12 rounded-full object-cover border-2 border-blue-600"
-                      />
+                      <img src={imagenPerfil} alt="Perfil" className="w-12 h-12 rounded-full object-cover border-2 border-blue-600" />
                     ) : (
                       <span className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-2xl">
                         {perfil.nombre[0]}
@@ -215,51 +191,28 @@ export default function HomePage() {
                     </div>
                   </div>
                   <div className="mt-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Cambiar imagen de perfil
-                    </label>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImagenPerfilChange}
-                      className="block w-full text-sm text-gray-600"
-                    />
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Cambiar imagen de perfil</label>
+                    <input type="file" accept="image/*" onChange={handleImagenPerfilChange} className="block w-full text-sm text-gray-600" />
                   </div>
                   <div className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Subir currículum
-                    </label>
-                    <input
-                      type="file"
-                      accept=".pdf,.doc,.docx"
-                      onChange={handleCurriculumChange}
-                      className="block w-full text-sm text-gray-600"
-                    />
-                    {curriculum && (
-                      <div className="text-xs text-green-600 mt-1">
-                        Archivo seleccionado: {curriculum.name}
-                      </div>
-                    )}
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Subir currículum</label>
+                    <input type="file" accept=".pdf,.doc,.docx" onChange={handleCurriculumChange} className="block w-full text-sm text-gray-600" />
+                    {curriculum && <div className="text-xs text-green-600 mt-1">Archivo seleccionado: {curriculum.name}</div>}
                   </div>
                 </div>
                 <ul className="py-2">
                   <li>
-                    <Link
-                      to="/editarperfil"
-                      className="block w-full text-left px-6 py-2 hover:bg-blue-50 text-gray-700"
-                    >
+                    <Link to="/editarperfil" className="block w-full text-left px-6 py-2 hover:bg-blue-50 text-gray-700">
                       Editar perfil
                     </Link>
                   </li>
                   <li>
-                    <button className="w-full text-left px-6 py-2 hover:bg-blue-50 text-gray-700">
-                      Ver solicitudes
-                    </button>
+                    <button className="w-full text-left px-6 py-2 hover:bg-blue-50 text-gray-700">Ver solicitudes</button>
                   </li>
                   <li>
-                    <button className="w-full text-left px-6 py-2 hover:bg-blue-50 text-gray-700">
+                    <Link to="/soporte" className="block w-full text-left px-6 py-2 hover:bg-blue-50 text-gray-700">
                       Soporte
-                    </button>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -269,12 +222,8 @@ export default function HomePage() {
       </header>
 
       <main className="text-center mt-20 px-4">
-        <h2 className="text-4xl font-bold text-white mb-4">
-          Encuentra el trabajo de tus sueños
-        </h2>
-        <p className="text-white mb-8 text-lg">
-          Conecta con miles de empresas y oportunidades laborales en tu área.
-        </p>
+        <h2 className="text-4xl font-bold text-white mb-4">Encuentra el trabajo de tus sueños</h2>
+        <p className="text-white mb-8 text-lg">Conecta con miles de empresas y oportunidades laborales en tu área.</p>
 
         <div className="max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 flex flex-col sm:flex-row gap-4 items-stretch">
           <input
@@ -282,7 +231,7 @@ export default function HomePage() {
             placeholder="¿Qué empleo buscas?"
             className="flex-1 border rounded-md px-4 py-2 min-w-[180px]"
             value={busqueda}
-            onChange={e => setBusqueda(e.target.value)}
+            onChange={(e) => setBusqueda(e.target.value)}
           />
           <select
             value={ubicacion}
@@ -291,15 +240,10 @@ export default function HomePage() {
           >
             <option value="">Selecciona una ciudad o municipio</option>
             {ciudadesColombia.map((ciudad, idx) => (
-              <option key={idx} value={ciudad}>
-                {ciudad}
-              </option>
+              <option key={idx} value={ciudad}>{ciudad}</option>
             ))}
           </select>
-          <button
-            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 min-w-[120px] transition"
-            style={{ whiteSpace: "nowrap" }}
-          >
+          <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 min-w-[120px] transition">
             Buscar
           </button>
         </div>
