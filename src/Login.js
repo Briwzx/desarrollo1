@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Login() {
@@ -7,59 +7,71 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [captchaToken, setCaptchaToken] = useState("");
+  const navigate = useNavigate();
 
-  // Usuario y contraseña predeterminados
-  const USUARIO_PREDETERMINADO = "admin@correo.com";
-  const CONTRASENA_PREDETERMINADA = "123456";
+  const USUARIOS = [
+    {
+      correo: "admin@correo.com",
+      contrasena: "123456",
+      nombre: "Administrador",
+      rol: "Admin",
+    },
+    {
+      correo: "usuario@correo.com",
+      contrasena: "123456",
+      nombre: "Usuario Normal",
+      rol: "Usuario",
+    },
+  ];
 
   const handleCaptchaChange = (token) => {
     setCaptchaToken(token);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!email || !password || !captchaToken) {
-      setError("Por favor completa todos los campos. Y verifica el CAPTCHA.");
+      setError("Por favor completa todos los campos y verifica el CAPTCHA.");
       return;
     }
 
-    // Validación local sin backend
-    if (
-      email === USUARIO_PREDETERMINADO &&
-      password === CONTRASENA_PREDETERMINADA
-    ) {
-      alert("Inicio de sesión exitoso");
-      window.open("/home", "_blank");
-      return;
+    const usuarioEncontrado = USUARIOS.find(
+      (u) => u.correo === email && u.contrasena === password
+    );
+
+    if (usuarioEncontrado) {
+      // Guardar usuario actual en localStorage
+      localStorage.setItem("email", usuarioEncontrado.correo);
+      localStorage.setItem("rol", usuarioEncontrado.rol);
+
+      // Verificar si ya existen usuarios en localStorage
+      const usuariosExistentes = JSON.parse(localStorage.getItem("usuarios")) || [];
+      const yaRegistrado = usuariosExistentes.some((u) => u.correo === email);
+
+      if (!yaRegistrado) {
+        const nuevosUsuarios = [
+          ...usuariosExistentes,
+          {
+            id: Date.now(),
+            nombre: usuarioEncontrado.nombre,
+            correo: usuarioEncontrado.correo,
+            rol: usuarioEncontrado.rol,
+          },
+        ];
+        localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
+      }
+
+      alert(`Inicio de sesión exitoso como ${usuarioEncontrado.rol}`);
+
+      if (usuarioEncontrado.rol === "Admin") {
+        navigate("/admin");
+      } else {
+        navigate("/home");
+      }
     } else {
       setError("Correo o contraseña incorrectos.");
-      return;
     }
-
-    // Si quieres mantener la llamada al backend, comenta el bloque anterior y descomenta lo siguiente:
-    /*
-    try {
-      const response = await fetch("http://localhost:8000/api/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password, captchaToken }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("Inicio de sesión exitoso");
-        window.open("/home", "_blank");
-      } else {
-        setError(data.error || "Error al iniciar sesión");
-      }
-    } catch (err) {
-      setError("Error de red o del servidor.");
-    }
-    */
   };
 
   return (

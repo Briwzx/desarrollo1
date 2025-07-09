@@ -177,7 +177,7 @@ export default function Register() {
 
           <div className="text-center mt-4">
             <Link
-              to="/"
+              to="/login"
               className="text-blue-600 hover:underline font-medium"
             >
               ← Volver al inicio de sesión

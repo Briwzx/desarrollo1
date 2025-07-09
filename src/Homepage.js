@@ -1,58 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const ciudadesColombia = [
-  "Bogotá", "Medellín", "Cali", "Barranquilla", "Cartagena", "Cúcuta", "Bucaramanga", "Pereira",
-  "Santa Marta", "Ibagué", "Villavicencio", "Manizales", "Pasto", "Montería", "Neiva", "Soacha",
-  "Armenia", "Sincelejo", "Popayán", "Valledupar", "Buenaventura", "Palmira", "Floridablanca",
-  "Riohacha", "Tuluá", "Dosquebradas", "Tunja", "Girardot", "Quibdó", "Yopal", "Apartadó",
-  "Florencia", "Turbo", "Maicao", "Sogamoso", "Facatativá", "Zipaquirá", "Fusagasugá", "Chía",
-  "Jamundí", "Ipiales", "Magangué", "Ciénaga", "Buga", "Itagüí", "Envigado", "Rionegro",
-  "Sabaneta", "Mosquera", "Cajicá", "La Dorada", "Malambo", "Madrid", "Piedecuesta", "Girón",
-  "Caldas", "Chigorodó", "El Carmen de Bolívar", "Lorica", "Cereté", "San Andrés",
-];
+const ciudadesColombia = [/*... lista de ciudades ...*/ "San Andrés"];
 
 export default function HomePage() {
   const [mostrarOfertas, setMostrarOfertas] = useState(false);
   const [mostrarEmpresas, setMostrarEmpresas] = useState(false);
   const [mostrarPerfil, setMostrarPerfil] = useState(false);
-  const ofertasRef = useRef(null);
-  const empresasRef = useRef(null);
-  const perfilRef = useRef(null);
   const [ubicacion, setUbicacion] = useState("");
   const [busqueda, setBusqueda] = useState("");
   const [curriculum, setCurriculum] = useState(null);
   const [imagenPerfil, setImagenPerfil] = useState(null);
+  const ofertasRef = useRef(null);
+  const empresasRef = useRef(null);
+  const perfilRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Obtener datos del usuario desde localStorage
+  const correo = localStorage.getItem("email") || "usuario@correo.com";
+  const rol = localStorage.getItem("rol") || "usuario normal";
 
   const perfil = {
-    nombre: "Admin",
-    correo: "admin@correo.com",
-    telefono: "+57 300 123 4567",
+    nombre: "Usuario",
+    correo: correo,
+    telefono: "+57 310 987 6543",
+    rol: rol,
   };
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (ofertasRef.current && !ofertasRef.current.contains(event.target)) {
-        setMostrarOfertas(false);
-      }
-      if (empresasRef.current && !empresasRef.current.contains(event.target)) {
-        setMostrarEmpresas(false);
-      }
-      if (perfilRef.current && !perfilRef.current.contains(event.target)) {
-        setMostrarPerfil(false);
-      }
-    }
-
-    if (mostrarOfertas || mostrarEmpresas || mostrarPerfil) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [mostrarOfertas, mostrarEmpresas, mostrarPerfil]);
 
   const ofertasNuevas = [
     { titulo: "Desarrollador Frontend React", empresa: "Tech Solutions", ubicacion: "Remoto" },
@@ -83,12 +56,43 @@ export default function HomePage() {
     }
   };
 
+  const cerrarSesion = () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("rol");
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ofertasRef.current && !ofertasRef.current.contains(event.target)) {
+        setMostrarOfertas(false);
+      }
+      if (empresasRef.current && !empresasRef.current.contains(event.target)) {
+        setMostrarEmpresas(false);
+      }
+      if (perfilRef.current && !perfilRef.current.contains(event.target)) {
+        setMostrarPerfil(false);
+      }
+    }
+
+    if (mostrarOfertas || mostrarEmpresas || mostrarPerfil) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [mostrarOfertas, mostrarEmpresas, mostrarPerfil]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-600 to-blue-400 text-gray-800">
       <header className="bg-white shadow-md py-4 px-6 flex flex-col sm:flex-row justify-between items-center relative gap-4">
         <h1 className="text-2xl font-bold text-blue-700">Mega Empleos</h1>
         <nav className="flex flex-wrap gap-2 items-center">
-          {/* Botón Ofertas */}
+
+          {/* Ofertas */}
           <div className="relative inline-block" ref={ofertasRef}>
             <button
               onClick={() => {
@@ -114,14 +118,11 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <div className="text-center p-2">
-                  <a href="#" className="text-blue-600 hover:underline text-sm">Ver todas las ofertas</a>
-                </div>
               </div>
             )}
           </div>
 
-          {/* Botón Empresas */}
+          {/* Empresas */}
           <div className="relative inline-block" ref={empresasRef}>
             <button
               onClick={() => {
@@ -147,14 +148,11 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <div className="text-center p-2">
-                  <a href="#" className="text-blue-600 hover:underline text-sm">Ver historial de envíos</a>
-                </div>
               </div>
             )}
           </div>
 
-          {/* Botón Perfil */}
+          {/* Perfil */}
           <div className="relative inline-block" ref={perfilRef}>
             <button
               onClick={() => {
@@ -188,8 +186,10 @@ export default function HomePage() {
                       <div className="font-bold text-lg">{perfil.nombre}</div>
                       <div className="text-sm text-gray-600">{perfil.correo}</div>
                       <div className="text-sm text-gray-600">{perfil.telefono}</div>
+                      <div className="text-sm text-blue-700 font-semibold capitalize">{perfil.rol}</div>
                     </div>
                   </div>
+
                   <div className="mt-2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">Cambiar imagen de perfil</label>
                     <input type="file" accept="image/*" onChange={handleImagenPerfilChange} className="block w-full text-sm text-gray-600" />
@@ -213,6 +213,11 @@ export default function HomePage() {
                     <Link to="/soporte" className="block w-full text-left px-6 py-2 hover:bg-blue-50 text-gray-700">
                       Soporte
                     </Link>
+                  </li>
+                  <li>
+                    <button onClick={cerrarSesion} className="w-full text-left px-6 py-2 hover:bg-red-100 text-red-600 font-semibold">
+                      Cerrar sesión
+                    </button>
                   </li>
                 </ul>
               </div>
