@@ -1,0 +1,997 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add usuario",
+    "content_type": 7,
+    "codename": "add_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change usuario",
+    "content_type": 7,
+    "codename": "change_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete usuario",
+    "content_type": 7,
+    "codename": "delete_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view usuario",
+    "content_type": 7,
+    "codename": "view_usuario"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add failed login attempt",
+    "content_type": 8,
+    "codename": "add_failedloginattempt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change failed login attempt",
+    "content_type": 8,
+    "codename": "change_failedloginattempt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete failed login attempt",
+    "content_type": 8,
+    "codename": "delete_failedloginattempt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view failed login attempt",
+    "content_type": 8,
+    "codename": "view_failedloginattempt"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Token",
+    "content_type": 9,
+    "codename": "add_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Token",
+    "content_type": 9,
+    "codename": "change_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Token",
+    "content_type": 9,
+    "codename": "delete_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Token",
+    "content_type": 9,
+    "codename": "view_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add Token",
+    "content_type": 10,
+    "codename": "add_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change Token",
+    "content_type": 10,
+    "codename": "change_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete Token",
+    "content_type": 10,
+    "codename": "delete_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view Token",
+    "content_type": 10,
+    "codename": "view_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add Postulación",
+    "content_type": 11,
+    "codename": "add_postulacion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change Postulación",
+    "content_type": 11,
+    "codename": "change_postulacion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete Postulación",
+    "content_type": 11,
+    "codename": "delete_postulacion"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view Postulación",
+    "content_type": 11,
+    "codename": "view_postulacion"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "mydjango",
+    "model": "usuario"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "mydjango",
+    "model": "failedloginattempt"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "authtoken",
+    "model": "token"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "authtoken",
+    "model": "tokenproxy"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "mydjango",
+    "model": "postulacion"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "y04pt7yykeow6l3qtdz1kvbuvcu1fs2l",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCgoODSfc9AZoZBqgaS0q6Md7dNutDtf-_9t4iwLiWunec4JXEVWovT74hAT647SQ-o9yap1WWeUO6KPGiXY0v8uh3u30GBXrY6-6wuORERWucDZFKGNQ7IThnP1mnwnGw4WxWYN9WTNhAQFAyZA4nPFzI9OSM:1uZA6n:zgOQTs-0IbR5Ffc0SPyB78bodYdxB8v534r2ERuhDPc",
+    "expire_date": "2025-07-22T15:19:49.029Z"
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 1,
+  "fields": {
+    "password": "secreta123",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Ana",
+    "middle_name": "Laura",
+    "last_name": "Pérez",
+    "second_last_name": "Gómez",
+    "email": "ana@example.com",
+    "phone": "123456789",
+    "country": "Colombia",
+    "city": "Medellín",
+    "address": "Calle 123",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 2,
+  "fields": {
+    "password": "micontraseña",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Juan",
+    "middle_name": "Carlos",
+    "last_name": "Pérez",
+    "second_last_name": "Gómez",
+    "email": "juan@example.com",
+    "phone": "123456789",
+    "country": "Colombia",
+    "city": "Bogotá",
+    "address": "Calle Falsa 123",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 3,
+  "fields": {
+    "password": "asd",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "sad",
+    "middle_name": null,
+    "last_name": "asd",
+    "second_last_name": "sad",
+    "email": "dsa@dsaddsa.es",
+    "phone": "3423",
+    "country": "adsd",
+    "city": "asd",
+    "address": "asdasd",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 4,
+  "fields": {
+    "password": "123",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Kike",
+    "middle_name": null,
+    "last_name": "Pibe",
+    "second_last_name": "Sda",
+    "email": "probando@gmail.com",
+    "phone": "123",
+    "country": "Colombia",
+    "city": "Medellin",
+    "address": "kra 12",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 5,
+  "fields": {
+    "password": "123456",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Ana",
+    "middle_name": null,
+    "last_name": "López",
+    "second_last_name": null,
+    "email": "ana2@example.com",
+    "phone": "1234567890",
+    "country": "Colombia",
+    "city": "Cali",
+    "address": "Calle 123",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 6,
+  "fields": {
+    "password": "123456",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Ana",
+    "middle_name": null,
+    "last_name": "López",
+    "second_last_name": null,
+    "email": "ana3@example.com",
+    "phone": "1234567890",
+    "country": "Colombia",
+    "city": "Cali",
+    "address": "Calle 123",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 7,
+  "fields": {
+    "password": "123456",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Ana",
+    "middle_name": null,
+    "last_name": "López",
+    "second_last_name": null,
+    "email": "ana4@example.com",
+    "phone": "1234567890",
+    "country": "Colombia",
+    "city": "Cali",
+    "address": "Calle 123",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$0jgrfP7KEApVeRST2mszFH$CEUsBaZw6cXjVsJJuktOjvjCASOHMnLeTP3HJnu8q5U=",
+    "last_login": null,
+    "is_superuser": true,
+    "first_name": "albert",
+    "middle_name": null,
+    "last_name": "o",
+    "second_last_name": null,
+    "email": "alberto@gmail.com",
+    "phone": "",
+    "country": "",
+    "city": "",
+    "address": "",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": true,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$I9qxRrln9q86sgZ9bK17N2$pWJiS9WTpO2bEQwIW3HW+T3+9/T9C+oaKnsKxMLJW9s=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Ana",
+    "middle_name": null,
+    "last_name": "Admin",
+    "second_last_name": null,
+    "email": "admin@example.com",
+    "phone": "12345678",
+    "country": "Colombia",
+    "city": "Bogotá",
+    "address": "Calle Falsa 123",
+    "role": "admin",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$UrsWPh7qO2fqLn3tIfStw2$R+b8k1Tg7vAou2bOaGGtP3+UeUxiWf5/3hgPkl/ii4g=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Pedro",
+    "middle_name": null,
+    "last_name": "Editor",
+    "second_last_name": null,
+    "email": "editor@example.com",
+    "phone": "87654321",
+    "country": "Colombia",
+    "city": "Medellín",
+    "address": "Carrera 9 #10-11",
+    "role": "editor",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$C0AwvjmnxexnDhCdop6uEX$usBIEe35HF2DnIn7DtH8W4ODgAyyH/xMuPQyOyTT6hM=",
+    "last_login": "2025-07-08T15:19:49.021Z",
+    "is_superuser": true,
+    "first_name": "admin2",
+    "middle_name": null,
+    "last_name": "2",
+    "second_last_name": null,
+    "email": "admin2@gmail.com",
+    "phone": "",
+    "country": "",
+    "city": "",
+    "address": "",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": true,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$r4bL6B1A7inxDTaCsrOlXz$0pvfSkvWOq6jsbrWVd13wvCom9SKhh+oYWVr1ayM2Nw=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "andres",
+    "middle_name": "a",
+    "last_name": "a",
+    "second_last_name": "valencia",
+    "email": "admin8@gmail.com",
+    "phone": "3137644007",
+    "country": "Colombia",
+    "city": "CALI",
+    "address": "admin8@gmail.com",
+    "role": "admin",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$CdeCvY6OWhufhpZiOcTLAh$B+4Hxz7dWz3rOAGm40HMSVYRHLVUcUAE6OJRIA0NMDw=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "andres",
+    "middle_name": "a",
+    "last_name": "a",
+    "second_last_name": "valencia",
+    "email": "admin16@gmail.com",
+    "phone": "3137644007",
+    "country": "Colombia",
+    "city": "CALI",
+    "address": "admin16@gmail.com",
+    "role": "admin",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.usuario",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$lPnhqib3mvJQW0VS5QFMiE$4cOmkUo8Hm4XEuRAJt8A4accYgzphOUN2DzsMfkx/FA=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "andres",
+    "middle_name": "a",
+    "last_name": "a",
+    "second_last_name": "valencia",
+    "email": "admin24@gmail.com",
+    "phone": "3137644007",
+    "country": "Colombia",
+    "city": "CALI",
+    "address": "admin24@gmail.com",
+    "role": "cliente",
+    "is_active": true,
+    "is_staff": false,
+    "is_locked": false,
+    "locked_until": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 1,
+  "fields": {
+    "username": "editor@example.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "PostmanRuntime/7.44.0",
+    "attempt_time": "2025-07-02T21:32:07.469Z",
+    "reason": "Contraseña incorrecta"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 3,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:29:25.385Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 4,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:37:26.283Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 5,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:37:27.492Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 6,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:52:11.065Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 7,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:52:15.683Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 8,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:52:40.782Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 9,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:52:41.563Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.failedloginattempt",
+  "pk": 10,
+  "fields": {
+    "username": "admin@correo.com",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+    "attempt_time": "2025-07-08T15:52:42.000Z",
+    "reason": "Usuario no encontrado"
+  }
+},
+{
+  "model": "mydjango.postulacion",
+  "pk": 1,
+  "fields": {
+    "usuario": 13,
+    "titulo_oferta": "panadero",
+    "descripcion_oferta": "hacer panes",
+    "fecha_postulacion": "2025-07-08T16:04:25.475Z",
+    "estado": "pendiente"
+  }
+},
+{
+  "model": "mydjango.postulacion",
+  "pk": 2,
+  "fields": {
+    "usuario": 11,
+    "titulo_oferta": "panadero",
+    "descripcion_oferta": "haga panes",
+    "fecha_postulacion": "2025-07-13T16:11:28.536Z",
+    "estado": "pendiente"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "99b101de81c5058e5bc3a96bd93dfa14fe48c283",
+  "fields": {
+    "user": 13,
+    "created": "2025-07-08T16:03:33.459Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "a2a44cde5770ae393f7e87eeb685bbf4f7b8fcd5",
+  "fields": {
+    "user": 11,
+    "created": "2025-07-08T15:51:41.936Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "cbbfd8074768dfb5b7eaf5b0960475ebadc61646",
+  "fields": {
+    "user": 12,
+    "created": "2025-07-08T16:03:00.221Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "f47e24009e0f3810871adbbf9fb6f67ef70eb4b2",
+  "fields": {
+    "user": 9,
+    "created": "2025-07-02T21:45:39.003Z"
+  }
+}
+]
